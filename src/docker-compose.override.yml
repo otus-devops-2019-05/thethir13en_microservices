@@ -1,0 +1,44 @@
+version: '3.3'
+services:
+
+  post_db:
+    image: mongo:${MONGODB_IMAGE_VERSION}
+    volumes:
+      - post_db:/data/db
+    networks:
+      - reddit
+
+  ui:
+    build: ./ui
+    image: ${USERNAME}/ui:${APP_UI_VERSION}
+    command:
+     - "--debug"
+     - "-w 2"
+    ports:
+      - ${APP_UI_PORT}:9292/tcp
+    networks:
+      - reddit-front
+
+  post:
+    build: ./post-py
+    image: ${USERNAME}/post:${APP_POST_VERSION}
+    networks:
+      - reddit
+      - reddit-front
+
+  comment:
+    build: ./comment
+    image: ${USERNAME}/comment:${APP_COMMENT_VERSION}
+    command:
+     - "--debug"
+     - "-w 2"
+    networks:
+      - reddit
+      - reddit-front
+
+volumes:
+  post_db:
+
+networks:
+  reddit:
+  reddit-front:
