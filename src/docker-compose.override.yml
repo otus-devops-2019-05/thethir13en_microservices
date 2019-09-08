@@ -12,8 +12,10 @@ services:
     build: ./ui
     image: ${USERNAME}/ui:${APP_UI_VERSION}
     command:
-     - "--debug"
-     - "-w 2"
+      - "--debug"
+      - "-w 2"
+    volumes:
+      - ./ui:/app
     ports:
       - ${APP_UI_PORT}:9292/tcp
     networks:
@@ -22,6 +24,8 @@ services:
   post:
     build: ./post-py
     image: ${USERNAME}/post:${APP_POST_VERSION}
+    volumes:
+      - ./post-py:/app
     networks:
       - reddit
       - reddit-front
@@ -30,8 +34,10 @@ services:
     build: ./comment
     image: ${USERNAME}/comment:${APP_COMMENT_VERSION}
     command:
-     - "--debug"
-     - "-w 2"
+      - "--debug"
+      - "-w 2"
+    volumes:
+      - ./comment:/app
     networks:
       - reddit
       - reddit-front
