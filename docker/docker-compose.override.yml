@@ -9,7 +9,6 @@ services:
       - reddit
 
   ui:
-    build: ./ui
     image: ${USERNAME}/ui:${APP_UI_VERSION}
     command:
       - "--debug"
@@ -22,7 +21,6 @@ services:
       - reddit-front
 
   post:
-    build: ./post-py
     image: ${USERNAME}/post:${APP_POST_VERSION}
     volumes:
       - ./post-py:/app
@@ -31,7 +29,6 @@ services:
       - reddit-front
 
   comment:
-    build: ./comment
     image: ${USERNAME}/comment:${APP_COMMENT_VERSION}
     command:
       - "--debug"

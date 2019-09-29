@@ -9,7 +9,6 @@ services:
       - reddit
 
   ui:
-    build: ./ui
     image: ${USERNAME}/ui:${APP_UI_VERSION}
     ports:
       - ${APP_UI_PORT}:9292/tcp
@@ -17,14 +16,12 @@ services:
       - reddit-front
 
   post:
-    build: ./post-py
     image: ${USERNAME}/post:${APP_POST_VERSION}
     networks:
       - reddit
       - reddit-front
 
   comment:
-    build: ./comment
     image: ${USERNAME}/comment:${APP_COMMENT_VERSION}
     networks:
       - reddit
