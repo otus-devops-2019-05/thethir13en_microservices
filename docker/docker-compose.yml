@@ -37,6 +37,9 @@ services:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
       - '--storage.tsdb.retention=1d'
+    networks:
+      - reddit
+      - reddit-front
 
 volumes:
   post_db:
