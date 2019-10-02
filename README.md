@@ -18,3 +18,7 @@ thethir13en microservices repository
 - Задать переменную окружения COMPOSE_PROJECT_NAME
 - Задать имя директории, содержащей docker-compose
 - Использовать аргумент "-p ${PROJECT_NAME}" при запуске команд docker-compose
+
+## Homework monitoring-1
+
+Dockerhub link: https://hub.docker.com/u/thethir13en

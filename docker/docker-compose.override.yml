@@ -9,23 +9,32 @@ services:
       - reddit
 
   ui:
-    build: ./ui
     image: ${USERNAME}/ui:${APP_UI_VERSION}
+    command:
+      - "--debug"
+      - "-w 2"
+    volumes:
+      - ./ui:/app
     ports:
       - ${APP_UI_PORT}:9292/tcp
     networks:
       - reddit-front
 
   post:
-    build: ./post-py
     image: ${USERNAME}/post:${APP_POST_VERSION}
+    volumes:
+      - ./post-py:/app
     networks:
       - reddit
       - reddit-front
 
   comment:
-    build: ./comment
     image: ${USERNAME}/comment:${APP_COMMENT_VERSION}
+    command:
+      - "--debug"
+      - "-w 2"
+    volumes:
+      - ./comment:/app
     networks:
       - reddit
       - reddit-front
