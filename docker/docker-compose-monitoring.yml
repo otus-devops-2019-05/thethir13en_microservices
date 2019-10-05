@@ -64,3 +64,13 @@ services:
     networks:
       - reddit
       - reddit-front
+
+  alertmanager:
+    image: ${USER_NAME}/alertmanager
+    command:
+      - '--config.file=/etc/alertmanager/config.yml'
+    ports:
+      - 9093:9093
+    networks:
+      - reddit
+      - reddit-front
