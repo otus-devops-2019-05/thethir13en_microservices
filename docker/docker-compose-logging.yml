@@ -4,6 +4,9 @@ services:
     image: openzipkin/zipkin
     ports:
       - "9411:9411"
+    networks:
+      - reddit
+      - reddit-front
 
   fluentd:
     image: ${USERNAME}/fluentd
