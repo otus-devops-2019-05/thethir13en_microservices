@@ -10,6 +10,8 @@ services:
 
   ui:
     image: ${USERNAME}/ui:${APP_UI_VERSION}
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
     command:
       - "--debug"
       - "-w 2"
@@ -27,6 +29,8 @@ services:
 
   post:
     image: ${USERNAME}/post:${APP_POST_VERSION}
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
     volumes:
       - ./post-py:/app
     logging:
@@ -40,6 +44,8 @@ services:
 
   comment:
     image: ${USERNAME}/comment:${APP_COMMENT_VERSION}
+    environment:
+      - ZIPKIN_ENABLED=${ZIPKIN_ENABLED}
     command:
       - "--debug"
       - "-w 2"
