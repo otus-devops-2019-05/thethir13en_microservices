@@ -15,6 +15,11 @@ services:
       - "-w 2"
     volumes:
       - ./ui:/app
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: service.ui
     ports:
       - ${APP_UI_PORT}:9292/tcp
     networks:
@@ -24,7 +29,6 @@ services:
     image: ${USERNAME}/post:${APP_POST_VERSION}
     volumes:
       - ./post-py:/app
-
     logging:
       driver: "fluentd"
       options:
