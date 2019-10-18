@@ -1,5 +1,5 @@
 ---
-apiVersion: apps/v1
+apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   name: post
@@ -23,5 +23,5 @@ spec:
       - image: thethir13en/post
         name: post
         env:
-        - name:  POST_DATABASE_HOST
+        - name: POST_DATABASE_HOST
           value: post-db
