@@ -22,3 +22,8 @@ spec:
       containers:
       - image: thethir13en/ui
         name: ui
+        env:
+        - name: ENV
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
