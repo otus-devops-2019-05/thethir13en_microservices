@@ -10,4 +10,4 @@ spec:
     - path: /*
       backend:
         serviceName: ui
-        servicePort: 80
+        servicePort: 9292
