@@ -4,7 +4,7 @@ kind: Ingress
 metadata:
   name: {{ template "ui.fullname" . }}
   annotations:
-    kubernetes.io/ingress.allow-http: "false"
+    kubernetes.io/ingress.allow-http: "true"
 spec:
   rules:
   - http:
